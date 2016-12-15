@@ -73,6 +73,8 @@ var o = { 'name' : 'Thluffy',
 
 //current number
 var currnum = 8;
+var l = document.getElementById('thelist');
+var li = l.getElementsByTagName("li");
 
 //add item
 var addItem = function() {
@@ -83,17 +85,18 @@ var addItem = function() {
         list.appendChild(newitem);
 };
 
+//remove item
 var removeItem = function(n) {
        var listitems = document.getElementsByTagName("li");
         listitems[n].remove();
 };
 
-var redCallback = function(e) {
-        console.log(this);
-        l.classList.add('red');
+//change head on hover
+var changeHead = function(e) {
+    console.log(this);
+    document.getElementById("h").innerHTML = this.innerHTML;
 };
 
-var l = document.getElementById('thelist');
 b.addEventListener('click',addItem);
-
+l.addEventListener('mouseover',changeHead);
 
