@@ -19,7 +19,7 @@ var f = function(x) {
 var fact = function(n) {
     var prod=1;
     for ( ; n > 1 ; n--){
-	prod = prod * n;
+    prod = prod * n;
     }
     return prod;
 };
@@ -28,10 +28,10 @@ var fact = function(n) {
 //(define fact (lambda (n) ...)
 var factR = function(n) {
     if ( n<=1 ) {
-	return 1;
+    return 1;
     }
     else {
-	return n * factR(n-1);
+    return n * factR(n-1);
     }
 };
 
@@ -55,21 +55,21 @@ var removeItem = function(n) {
 var red = function() {
     var items = document.getElementsByTagName("li");
     for(var i = 0; i < items.length; i++) {
-	items[i].classList.add('red');
+    items[i].classList.add('red');
     }
 };
 
 
 //instantiate an object
 var o = { 'name' : 'Thluffy',
-	  age : 15,
-	  items : [10, 20, 30, 40],
-	  morestuff : {a : 1, b : 'ayo'},
-	  func : function(x) {
-	      return x+30;
-	  }
-	};
-*/
+      age : 15,
+      items : [10, 20, 30, 40],
+      morestuff : {a : 1, b : 'ayo'},
+      func : function(x) {
+          return x+30;
+      }
+    };
+    */
 
 //current number
 var currnum = 8;
@@ -78,25 +78,38 @@ var li = l.getElementsByTagName("li");
 
 //add item
 var addItem = function() {
-        var list = document.getElementById("thelist");
-        var newitem = document.createElement("li");
-        newitem.innerHTML = "item " + currnum;
-        currnum = currnum + 1;
-        list.appendChild(newitem);
+    var list = document.getElementById("thelist");
+    var newitem = document.createElement("li");
+    newitem.innerHTML = "item " + currnum;
+    currnum = currnum + 1;
+    list.appendChild(newitem);
+
+    newitem.addEventListener('mouseover',listHead);
+    newitem.addEventListener('mouseout',returnHead);
 };
 
 //remove item
 var removeItem = function(n) {
-       var listitems = document.getElementsByTagName("li");
-        listitems[n].remove();
+    var listitems = document.getElementsByTagName("li");
+    listitems[n].remove();
 };
 
-//change head on hover
-var changeHead = function(e) {
+//change head to list element when mouseover
+var listHead = function(e) {
     console.log(this);
     document.getElementById("h").innerHTML = this.innerHTML;
 };
 
-b.addEventListener('click',addItem);
-l.addEventListener('mouseover',changeHead);
+//change head back to Hello World! when mouseout
+var returnHead = function(e) {
+    console.log(this);
+    document.getElementById("h").innerHTML = "Hello World!";
+};
 
+b.addEventListener('click',addItem);
+
+//add event listeners to elements of list
+for(var i = 0; i<li.length; i++) {
+    li[i].addEventListener('mouseover',listHead);
+    li[i].addEventListener('mouseout',returnHead);
+}
