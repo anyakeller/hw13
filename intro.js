@@ -1,3 +1,5 @@
+
+/* notes 'n stuff
 //send diagnostic output to console
 //(Ctrl-Shift-J in Chromium & Firefox to reveal console)
 console.log("AYO");
@@ -67,3 +69,31 @@ var o = { 'name' : 'Thluffy',
 	      return x+30;
 	  }
 	};
+*/
+
+//current number
+var currnum = 8;
+
+//add item
+var addItem = function() {
+        var list = document.getElementById("thelist");
+        var newitem = document.createElement("li");
+        newitem.innerHTML = "item " + currnum;
+        currnum = currnum + 1;
+        list.appendChild(newitem);
+};
+
+var removeItem = function(n) {
+       var listitems = document.getElementsByTagName("li");
+        listitems[n].remove();
+};
+
+var redCallback = function(e) {
+        console.log(this);
+        l.classList.add('red');
+};
+
+var l = document.getElementById('thelist');
+b.addEventListener('click',addItem);
+
+
