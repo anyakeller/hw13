@@ -89,9 +89,9 @@ var addItem = function() {
 };
 
 //remove item
-var removeItem = function(n) {
+var removeItem = function() {
     var listitems = document.getElementsByTagName("li");
-    listitems[n].remove();
+    this.remove();
 };
 
 //change head to list element when mouseover
@@ -112,4 +112,5 @@ b.addEventListener('click',addItem);
 for(var i = 0; i<li.length; i++) {
     li[i].addEventListener('mouseover',listHead);
     li[i].addEventListener('mouseout',returnHead);
+    li[i].addEventListener('click',removeItem);
 }
